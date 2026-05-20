@@ -8,6 +8,16 @@ import LanguageChips from './components/LanguageChips'
 
 export default function AssemblyEndgame() {
 
+  const [currentWord, setCurrentWord] = useState("react")
+
+  const splitCurrentWord = currentWord.split("")
+  console.log(splitCurrentWord)
+
+  const letters = splitCurrentWord.map((letter, index) => (
+    <span key={index}> {letter.toUpperCase()}</span>
+  ))
+  console.log(letters)
+
   const languageChips = languages.map(lang => (
     <LanguageChips
       key={lang.name}
@@ -24,6 +34,9 @@ export default function AssemblyEndgame() {
       <Status />
       <section className="language-chips">
         {languageChips}
+      </section>
+      <section className="word">
+        {letters}
       </section>
     </main>
     
