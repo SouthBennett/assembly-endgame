@@ -6,7 +6,5 @@ export default function Status() {
       <h2>You Win!</h2>
       <p>Well Done! 🎉</p>
     </section>
-    
-
   )
 }
