@@ -4,6 +4,9 @@ import Status from './components/Status'
 // import LanguageChips from './components/LanguageChips'
 import { languages } from './languages'
 import LanguageChips from './components/LanguageChips'
+import Keyboard from './components/Keyboard'
+import Button from './components/Button'
+
 
 
 export default function AssemblyEndgame() {
@@ -28,6 +31,8 @@ export default function AssemblyEndgame() {
   ))
   console.log(languageChips)
 
+  
+
   return (
     <main>
       <Header />
@@ -38,6 +43,10 @@ export default function AssemblyEndgame() {
       <section className="word">
         {letters}
       </section>
+      <section className="keyboard">
+        <Keyboard />
+      </section>
+      <Button />
     </main>
     
   )
