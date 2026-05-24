@@ -22,6 +22,8 @@ export default function Keyboard(props) {
           key={index}
           letter={letter}
           disabled={props.isGameOver}
+          aria-disabled={props.guessedLetters.includes(letter)}
+          aria-label={`Word ${letter}`}
           onClick={() => props.chosenLetter(letter)}
         >
         {letter.toUpperCase()}  

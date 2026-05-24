@@ -17,22 +17,15 @@ export default function AssemblyEndgame() {
   
   // Derived values
   const wrongGuessesCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
-
   const isGameLost = wrongGuessesCount >= languages.length - 1
-  // console.log("Game Over! You Lose!: " + isGameOver)
-
   const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
-  // console.log("You Win!: " + isGameWon)
-
   const isGameOver = isGameWon || isGameLost
 
   const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
-
   const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter) 
   console.log(isLastGuessIncorrect)
 
   const splitCurrentWord = currentWord.split("")
-
   const letters = splitCurrentWord.map((letter, index) => (
     <span 
       key={index}> 
@@ -62,6 +55,7 @@ export default function AssemblyEndgame() {
   return (
     <main>
       <Header />
+
       <Status 
         isGameWon={isGameWon}
         isGameLost={isGameLost}
@@ -71,13 +65,26 @@ export default function AssemblyEndgame() {
         wrongGuessesCount={wrongGuessesCount}
         languages={languages}
       />
+
       <section className="language-chips">
         {languageChips}
-        {/* {wrongGuessesCount} */}
       </section>
+
       <section className="word">
         {letters}
       </section>
+
+      <section 
+        className="sr-only" 
+        aria-live="polite" 
+        role="status"
+      >
+        <p>Current word: {currentWord.split("").map(letter => 
+          guessedLetters.includes(letter) ? letter + "." : "blank.")
+          .join(" ")}
+        </p>
+      </section>
+
       <section className="keyboard">
         <Keyboard 
             chosenLetter={addGuessedLetter}
@@ -86,7 +93,9 @@ export default function AssemblyEndgame() {
             isGameOver={isGameOver}
         />
       </section>
+
       {isGameOver && <Button />}
+
     </main>
     
   )
