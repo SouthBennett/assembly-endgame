@@ -1,4 +1,4 @@
-export default function Keyboard() {
+export default function Keyboard(props) {
 
   function mapAlphabet() {
     const alphabet = "abcdefghijklmnopqrstuvwxyz";
@@ -8,6 +8,7 @@ export default function Keyboard() {
     <button
       key={index}
       letter={letter}
+      onClick={() => props.chosenLetter(letter)}
     >
     {letter.toUpperCase()}  
     </button>  
