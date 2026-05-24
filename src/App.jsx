@@ -7,6 +7,7 @@ import LanguageChips from './components/LanguageChips'
 import Keyboard from './components/Keyboard'
 import Button from './components/Button'
 import { getFarewellText, getRandomWord } from './components/utils'
+import clsx from 'clsx'
 
 
 
@@ -27,12 +28,18 @@ export default function AssemblyEndgame() {
   console.log(isLastGuessIncorrect)
 
   const splitCurrentWord = currentWord.split("")
-  const letters = splitCurrentWord.map((letter, index) => (
-    <span 
-      key={index}> 
-      {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
-    </span>
-  ))
+  const letters = splitCurrentWord.map((letter, index) => {
+    const shouldRevealLetter = isGameLost || guessedLetters.includes(letter)
+    const letterClassName = clsx(
+      isGameLost && !guessedLetters.includes(letter) && "missed-letter"
+    )
+    return (
+      <span 
+        key={index} className={letterClassName}> 
+        {shouldRevealLetter ? letter.toUpperCase() : ""}
+      </span>
+    )
+  })
 
   const languageChips = languages.map((lang, index) => (
     <LanguageChips
