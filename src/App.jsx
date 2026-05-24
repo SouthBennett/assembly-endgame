@@ -53,6 +53,8 @@ export default function AssemblyEndgame() {
       <section className="keyboard">
         <Keyboard 
             chosenLetter={addGuessedLetter}
+            guessedLetters={guessedLetters}
+            currentWord={currentWord}
         />
       </section>
       <Button />
