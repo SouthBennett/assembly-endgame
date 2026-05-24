@@ -16,6 +16,7 @@ export default function AssemblyEndgame() {
   
   // Derived values
   const wrongGuessesCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
+  // console.log(wrongGuessesCount)
 
   const splitCurrentWord = currentWord.split("")
 
@@ -26,12 +27,14 @@ export default function AssemblyEndgame() {
     </span>
   ))
 
-  const languageChips = languages.map(lang => (
+  const languageChips = languages.map((lang, index) => (
     <LanguageChips
+      index={index}
       key={lang.name}
       name={lang.name}
       backgroundColor={lang.backgroundColor}
       color={lang.color}
+      wrongGuessesCount={wrongGuessesCount}
     />
   ))
   console.log(languageChips)
@@ -49,6 +52,7 @@ export default function AssemblyEndgame() {
       <Status />
       <section className="language-chips">
         {languageChips}
+        {/* {wrongGuessesCount} */}
       </section>
       <section className="word">
         {letters}
