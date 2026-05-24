@@ -3,12 +3,19 @@ export default function Status(props) {
 
   const gameStatusClass = clsx("game-status", {
     won: props.isGameWon,
-    lost: props.isGameLost
+    lost: props.isGameLost,
+    farewell: !props.isGameOver && props.isLastGuessIncorrect
   })
 
   function renderGameStatus() {
-    if (!props.isGameOver) {
-      return null
+    if (!props.isGameOver && props.isLastGuessIncorrect) {
+      return (
+      <p 
+        className="farewell-message"
+      >
+        {props.getFarewellText(props.languages[props.wrongGuessesCount - 1].name)}
+      </p>
+      )
     }
 
     if (props.isGameWon) {
@@ -18,7 +25,8 @@ export default function Status(props) {
           <p>Well Done! 🎉</p>
         </>
       )
-    } else {
+    } 
+    if (props.isGameLost) {
       return (
         <>
           <h2>You Lose</h2>
@@ -26,6 +34,8 @@ export default function Status(props) {
         </>
       )
     }
+
+    return null
   }
   return (
     <section className={gameStatusClass}>

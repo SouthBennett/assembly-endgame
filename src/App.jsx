@@ -6,6 +6,7 @@ import { languages } from './languages'
 import LanguageChips from './components/LanguageChips'
 import Keyboard from './components/Keyboard'
 import Button from './components/Button'
+import { getFarewellText } from './components/utils'
 
 
 
@@ -24,6 +25,11 @@ export default function AssemblyEndgame() {
   // console.log("You Win!: " + isGameWon)
 
   const isGameOver = isGameWon || isGameLost
+
+  const lastGuessedLetter = guessedLetters[guessedLetters.length - 1]
+
+  const isLastGuessIncorrect = lastGuessedLetter && !currentWord.includes(lastGuessedLetter) 
+  console.log(isLastGuessIncorrect)
 
   const splitCurrentWord = currentWord.split("")
 
@@ -60,6 +66,10 @@ export default function AssemblyEndgame() {
         isGameWon={isGameWon}
         isGameLost={isGameLost}
         isGameOver={isGameOver}
+        isLastGuessIncorrect={isLastGuessIncorrect}
+        getFarewellText={getFarewellText}
+        wrongGuessesCount={wrongGuessesCount}
+        languages={languages}
       />
       <section className="language-chips">
         {languageChips}
