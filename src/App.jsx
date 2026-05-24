@@ -16,7 +16,14 @@ export default function AssemblyEndgame() {
   
   // Derived values
   const wrongGuessesCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
-  // console.log(wrongGuessesCount)
+
+  const isGameLost = wrongGuessesCount >= languages.length - 1
+  // console.log("Game Over! You Lose!: " + isGameOver)
+
+  const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
+  // console.log("You Win!: " + isGameWon)
+
+  const isGameOver = isGameLost || isGameWon
 
   const splitCurrentWord = currentWord.split("")
 
@@ -64,7 +71,7 @@ export default function AssemblyEndgame() {
             currentWord={currentWord}
         />
       </section>
-      <Button />
+      {isGameOver && <Button />}
     </main>
     
   )
