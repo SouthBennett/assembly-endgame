@@ -23,7 +23,7 @@ export default function AssemblyEndgame() {
   const isGameWon = currentWord.split("").every(letter => guessedLetters.includes(letter))
   // console.log("You Win!: " + isGameWon)
 
-  const isGameOver = isGameLost || isGameWon
+  const isGameOver = isGameWon || isGameLost
 
   const splitCurrentWord = currentWord.split("")
 
@@ -56,7 +56,11 @@ export default function AssemblyEndgame() {
   return (
     <main>
       <Header />
-      <Status />
+      <Status 
+        isGameWon={isGameWon}
+        isGameLost={isGameLost}
+        isGameOver={isGameOver}
+      />
       <section className="language-chips">
         {languageChips}
         {/* {wrongGuessesCount} */}
