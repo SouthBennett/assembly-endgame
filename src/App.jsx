@@ -8,6 +8,7 @@ import Keyboard from './components/Keyboard'
 import Button from './components/Button'
 import { getFarewellText, getRandomWord } from './components/utils'
 import clsx from 'clsx'
+import Confetti from 'react-confetti'
 
 
 
@@ -67,6 +68,12 @@ export default function AssemblyEndgame() {
 
   return (
     <main>
+      {isGameWon &&
+        <Confetti 
+          recycle={false}
+          numberOfPieces={1000}
+        />
+      }
       <Header />
 
       <Status 
