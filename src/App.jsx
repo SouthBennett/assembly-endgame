@@ -53,6 +53,11 @@ export default function AssemblyEndgame() {
       [...prevLetters, letter])
   }
 
+  function startNewGame() {
+    setCurrentWord(getRandomWord())
+    setGuessedLetter([])
+  }
+
   return (
     <main>
       <Header />
@@ -103,7 +108,10 @@ export default function AssemblyEndgame() {
         />
       </section>
 
-      {isGameOver && <Button />}
+      {isGameOver && 
+        <Button 
+          startNewGame={startNewGame}
+        />}
 
     </main>
     

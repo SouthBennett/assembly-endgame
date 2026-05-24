@@ -1,6 +1,11 @@
-export default function Button() {
+export default function Button(props) {
   return (
-    <button className="new-game">New Game</button>
+    <button 
+    className="new-game"
+    onClick={props.startNewGame}
+    >
+      New Game
+    </button>
   )
   
 }
