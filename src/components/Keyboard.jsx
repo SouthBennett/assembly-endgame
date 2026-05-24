@@ -21,6 +21,7 @@ export default function Keyboard(props) {
           className={className}
           key={index}
           letter={letter}
+          disabled={props.isGameOver}
           onClick={() => props.chosenLetter(letter)}
         >
         {letter.toUpperCase()}  

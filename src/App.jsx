@@ -83,6 +83,7 @@ export default function AssemblyEndgame() {
             chosenLetter={addGuessedLetter}
             guessedLetters={guessedLetters}
             currentWord={currentWord}
+            isGameOver={isGameOver}
         />
       </section>
       {isGameOver && <Button />}
