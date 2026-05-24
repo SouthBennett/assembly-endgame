@@ -19,7 +19,10 @@ export default function AssemblyEndgame() {
   // console.log(splitCurrentWord)
 
   const letters = splitCurrentWord.map((letter, index) => (
-    <span key={index}> {letter.toUpperCase()}</span>
+    <span 
+      key={index}> 
+      {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
+    </span>
   ))
   // console.log(letters)
 
