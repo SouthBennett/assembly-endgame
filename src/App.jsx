@@ -10,13 +10,14 @@ import Button from './components/Button'
 
 
 export default function AssemblyEndgame() {
-
+  // State values
   const [currentWord, setCurrentWord] = useState("react")
   const [guessedLetters, setGuessedLetter] =  useState([]);
-  console.log(guessedLetters)
+  
+  // Derived values
+  const wrongGuessesCount = guessedLetters.filter(letter => !currentWord.includes(letter)).length
 
   const splitCurrentWord = currentWord.split("")
-  // console.log(splitCurrentWord)
 
   const letters = splitCurrentWord.map((letter, index) => (
     <span 
@@ -24,7 +25,6 @@ export default function AssemblyEndgame() {
       {guessedLetters.includes(letter) ? letter.toUpperCase() : ""}
     </span>
   ))
-  // console.log(letters)
 
   const languageChips = languages.map(lang => (
     <LanguageChips
